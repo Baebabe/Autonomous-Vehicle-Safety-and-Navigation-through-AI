@@ -77,7 +77,8 @@ This project simulates autonomous vehicle behavior in the CARLA environment, dem
 - Basic control leads to less smooth movement in complex scenarios
 
 ![Basic Navigation Controller Examples](images/stops1.gif)
-![](images/stops2.gif)
+![6](images/stops2.gif)
+
 ### MPC Navigation Controller Results
 
 **Improved Performance**:
@@ -90,7 +91,7 @@ This project simulates autonomous vehicle behavior in the CARLA environment, dem
 - More efficient energy usage with smoother acceleration profiles
 - Enhanced comfort with reduced jerky movements
 
-![MPC Navigation Controller Example](https://via.placeholder.com/600x300/27ae60/ffffff?text=MPC+Navigation+Controller+Example)
+![MPC Navigation Controller Example](images/stops3.gif)
 
 ### MPC-RL Controller Results
 
@@ -110,7 +111,11 @@ This project simulates autonomous vehicle behavior in the CARLA environment, dem
 - Adaptive behavior from RL training in dynamic traffic scenarios
 - Enhanced pedestrian and vehicle interaction
 
-![MPC-RL Controller Example](https://via.placeholder.com/600x300/2980b9/ffffff?text=MPC-RL+Controller+Example)
+![MPC-RL Controller Example](images/first.gif)
+![2](images/second.gif)
+![3](images/third.gif)
+![4](images/fifth.gif)
+
 
 
 ### Perception Systems
@@ -123,7 +128,7 @@ This project simulates autonomous vehicle behavior in the CARLA environment, dem
 #### YOLO Integration (MPC-RL Controller)
 - **YOLOv11 Object Detection**: Real-time identification of vehicles, pedestrians, and obstacles
 - **Object Classification**: 80+ classes including vehicles, pedestrians, traffic signs
-- **Detection Performance**: 30 FPS on RTX 4090, maintaining real-time performance
+- **Detection Performance**: 10 FPS on RTX 4090, maintaining real-time performance
 - **Distance Estimation**: Combining YOLO bounding boxes with depth information
 
 ## 📁 Project Structure
@@ -428,25 +433,26 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
     <tr>
       <td align="center">
         <b>Basic Navigation Controller</b><br>
-        <a href="https://youtube.com/placeholder-navigation-controller">
-          <img src="https://via.placeholder.com/320x180/34495e/ffffff?text=Basic+Controller+Demo" width="320px">
+        <a href="https://youtube.com/placeholder-navigation-controller" target="_blank">
+          <img src="https://img.youtube.com/vi/placeholder-navigation-controller/0.jpg" width="320px">
         </a>
       </td>
       <td align="center">
         <b>MPC Navigation Controller</b><br>
-        <a href="https://youtu.be/LuupTtgS4D0">
-          <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fcarla-ue5.readthedocs.io%2Fen%2Flatest%2Fstart_quickstart%2F&psig=AOvVaw25MI_sGEz4qvW1r58PpTT8&ust=1745407281182000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPiE4PzC64wDFQAAAAAdAAAAABAn" width="320px">
+        <a href="https://youtu.be/LuupTtgS4D0" target="_blank">
+          <img src="https://img.youtube.com/vi/LuupTtgS4D0/0.jpg" width="320px">
         </a>
       </td>
       <td align="center">
         <b>MPC-RL Controller</b><br>
-        <a href="https://youtube.com/placeholder-mpc-rl-controller">
-          <img src="https://via.placeholder.com/320x180/2980b9/ffffff?text=MPC-RL+Controller+Demo" width="320px">
+        <a href="https://youtube.com/placeholder-mpc-rl-controller" target="_blank">
+          <img src="https://img.youtube.com/vi/placeholder-mpc-rl-controller/0.jpg" width="320px">
         </a>
       </td>
     </tr>
   </table>
 </div>
+
 
 ---
 
