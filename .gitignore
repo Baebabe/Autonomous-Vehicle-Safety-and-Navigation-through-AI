@@ -1,0 +1,8 @@
+/rl_mpc/logs
+/rl_mpc/models
+rl_mpc/New folder
+/rl_mpc/__pycache__
+/rl_mpc/backup.py 
+/rl_mpc/carla_env.py
+/rl_mpc/mpc_main.py
+/controller/__pycache__
