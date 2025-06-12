@@ -76,8 +76,12 @@ This project simulates autonomous vehicle behavior in the CARLA environment, dem
 - Limited adaptability to highly dynamic environments
 - Basic control leads to less smooth movement in complex scenarios
 
-![Basic Navigation Controller Examples](images/stops1.gif)
-![6](images/stops2.gif)
+<div align="center">
+  <img src="images/stops1.gif" width="300px" style="margin: 5px;">
+  <img src="images/stops2.gif" width="300px" style="margin: 5px;">
+</div>
+
+---
 
 ### MPC Navigation Controller Results
 
@@ -91,7 +95,11 @@ This project simulates autonomous vehicle behavior in the CARLA environment, dem
 - More efficient energy usage with smoother acceleration profiles
 - Enhanced comfort with reduced jerky movements
 
-![MPC Navigation Controller Example](images/stops3.gif)
+<div align="center">
+  <img src="images/stops3.gif" width="300px" style="margin: 5px;">
+</div>
+
+---
 
 ### MPC-RL Controller Results
 
@@ -104,18 +112,25 @@ This project simulates autonomous vehicle behavior in the CARLA environment, dem
 - Mean reward: ~500 ± 50
 - Collision rate: <5% in trained scenarios
 - Speed control accuracy: ~85% (deviation from target speed <15%)
-- Average speed: ~15-25 km/h, with intelligent adjustments for conditions
+- Average speed: ~15–25 km/h, with intelligent adjustments for conditions
 
 **Advanced Capabilities**:
 - Smooth trajectories through MPC optimization
 - Adaptive behavior from RL training in dynamic traffic scenarios
 - Enhanced pedestrian and vehicle interaction
 
-![MPC-RL Controller Example](images/first.gif)
-![2](images/second.gif)
-![3](images/third.gif)
-![4](images/fifth.gif)
-
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="images/first.gif" width="240px" style="margin: 5px;"></td>
+      <td><img src="images/second.gif" width="240px" style="margin: 5px;"></td>
+    </tr>
+    <tr>
+      <td><img src="images/third.gif" width="240px" style="margin: 5px;"></td>
+      <td><img src="images/fifth.gif" width="240px" style="margin: 5px;"></td>
+    </tr>
+  </table>
+</div>
 
 
 ### Perception Systems
@@ -433,8 +448,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
     <tr>
       <td align="center">
         <b>Basic Navigation Controller</b><br>
-        <a href="https://youtube.com/placeholder-navigation-controller" target="_blank">
-          <img src="https://img.youtube.com/vi/placeholder-navigation-controller/0.jpg" width="320px">
+        <a href="https://youtu.be/jG5JvMHZknQ" target="_blank">
+          <img src="https://img.youtube.com/vi/jG5JvMHZknQ/0.jpg" width="320px">
         </a>
       </td>
       <td align="center">
@@ -443,15 +458,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
           <img src="https://img.youtube.com/vi/LuupTtgS4D0/0.jpg" width="320px">
         </a>
       </td>
-      <td align="center">
-        <b>MPC-RL Controller</b><br>
-        <a href="https://youtube.com/placeholder-mpc-rl-controller" target="_blank">
-          <img src="https://img.youtube.com/vi/placeholder-mpc-rl-controller/0.jpg" width="320px">
-        </a>
-      </td>
     </tr>
   </table>
 </div>
+
 
 
 ---
