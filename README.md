@@ -1,242 +1,411 @@
 # 🚗 Autonomous Vehicle Safety & Navigation through AI
 
 <div align="center">
+  <img src="https://i.ytimg.com/vi/u2TxYhv3UKE/maxresdefault.jpg" alt="CARLA Simulation Environment" width="100%" style="border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); margin: 20px 0;">
+  
+  <h3 style="color: #4A90E2; margin: 0; font-weight: 300;">Advanced Autonomous Vehicle Control Systems in CARLA Simulation</h3>
+  <p style="color: #666; font-size: 18px; margin: 10px 0;">Demonstrating Progressive AI Architectures for Autonomous Navigation</p>
+</div>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-![CARLA Version](https://img.shields.io/badge/CARLA-0.10.0-green?style=for-the-badge&logo=unrealengine)
-![Python](https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge&logo=python)
-![Status](https://img.shields.io/badge/Status-Production%20Ready-success?style=for-the-badge)
-
-*Advanced autonomous vehicle simulation featuring three progressive control architectures*
-
-[📖 Documentation](#-documentation) • [🚀 Quick Start](#-quick-start) • [🔬 Implementations](#-implementations) • [📊 Performance](#-performance-metrics)
+<div align="center">
+  
+  [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge&logo=opensourceinitiative&logoColor=white)](https://opensource.org/licenses/MIT)
+  ![CARLA Version](https://img.shields.io/badge/CARLA-0.10.0-00D2FF?style=for-the-badge&logo=unrealengine&logoColor=white)
+  ![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)
+  ![PyTorch](https://img.shields.io/badge/PyTorch-2.0-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
+  ![Status](https://img.shields.io/badge/Status-Production%20Ready-00C851?style=for-the-badge&logo=checkmarx&logoColor=white)
 
 </div>
 
 ---
 
-## 🌟 Overview
+## 🎯 Project Overview
 
-This project demonstrates the evolution of autonomous vehicle control systems through three sophisticated implementations, each building upon the previous to achieve enhanced safety and navigation capabilities in the CARLA simulation environment.
+This research project implements **three progressive autonomous vehicle control architectures** within the CARLA simulator, each representing an evolutionary step in autonomous driving technology. From foundational P-control systems to sophisticated AI-driven decision making, this implementation showcases the technological progression in autonomous vehicle safety and navigation.
+
+> **CARLA Simulator**: An open-source autonomous driving simulator built on Unreal Engine 4, providing photorealistic urban environments with dynamic weather, lighting conditions, and complex traffic scenarios for robust autonomous vehicle testing.
+
+<div align="center">
+  <table style="border: none;">
+    <tr>
+      <td align="center" style="border: none; padding: 20px;">
+        <h4>🎯 Basic Navigation</h4>
+        <p><strong>A* Pathfinding + P Control</strong></p>
+        <p>Foundational autonomous navigation with proportional control for steering and throttle</p>
+      </td>
+      <td align="center" style="border: none; padding: 20px;">
+        <h4>🎯 MPC Enhanced</h4>
+        <p><strong>Model Predictive Control</strong></p>
+        <p>Advanced trajectory optimization with predictive horizon planning</p>
+      </td>
+      <td align="center" style="border: none; padding: 20px;">
+        <h4>🎯 AI-Powered Navigation</h4>
+        <p><strong>MPC + Reinforcement Learning</strong></p>
+        <p>Intelligent decision making with PPO-based adaptive control</p>
+      </td>
+    </tr>
+  </table>
+</div>
+
+---
+
+## 🔬 Technical Implementations
+
+### 📊 **System Architecture**
 
 <div align="center">
 
-| 🎯 **Basic Navigation** | 🎯 **MPC Enhanced** | 🎯 **AI-Powered** |
-|:----------------------:|:-------------------:|:------------------:|
-| A* + P Control | Model Predictive Control | MPC + Reinforcement Learning |
-| CARLA Sensors | CARLA Sensors | YOLO + CARLA Integration |
-| Foundation System | Smooth Operation | Adaptive Intelligence |
+```mermaid
+graph TB
+    subgraph "🌍 CARLA Simulation Environment"
+        A[🏙️ Urban Environment] --> B[📊 Sensor Suite]
+        B --> C[🚗 Ego Vehicle]
+        C --> D[🚦 Traffic Scenarios]
+    end
+    
+    subgraph "🎛️ Control Systems"
+        E{🧠 Controller Selection}
+        E -->|Basic| F[🗺️ A* Pathfinding]
+        E -->|Enhanced| G[📈 MPC Optimization]
+        E -->|AI-Powered| H[🤖 RL Decision Engine]
+    end
+    
+    subgraph "📡 Perception Layer"
+        I[📷 RGB Camera]
+        J[🌊 LiDAR]
+        K[📡 Radar]
+        L[👁️ YOLO Detection]
+    end
+    
+    subgraph "⚙️ Control Algorithms"
+        F --> M[🎯 P Controller]
+        G --> N[📊 MPC Controller]
+        H --> O[🧠 PPO Agent]
+    end
+    
+    subgraph "🛡️ Safety Systems"
+        P[🚨 Collision Avoidance]
+        Q[🚦 Traffic Light Recognition]
+        R[🚶 Pedestrian Detection]
+    end
+    
+    B --> I & J & K
+    I & J & K --> L
+    L --> E
+    M & N & O --> P & Q & R
+    P & Q & R --> S[🚗 Vehicle Control Commands]
+    
+    style A fill:#e1f5fe
+    style E fill:#f3e5f5
+    style L fill:#fff3e0
+    style S fill:#e8f5e8
+```
 
 </div>
 
 ---
 
-## 🔬 Implementations
+### 🚙 **1. Basic Navigation Controller**
 
-### 🚙 **Basic Navigation Controller**
-*Foundation of autonomous driving with essential safety features*
+**Foundation System** - Implements core autonomous driving principles using classical control theory and pathfinding algorithms.
 
-**Core Technologies:**
-- **🗺️ A* Path Planning** - Optimal route generation
-- **⚡ P Control** - Proportional steering and speed control  
-- **🛡️ Safety Systems** - Emergency obstacle detection
-- **📡 CARLA Sensors** - Native radar and LIDAR integration
+#### **Mathematical Framework**
+
+**P-Controller for Steering:**
+```
+δ(t) = Kp × e(t)
+```
+where:
+- `δ(t)` = steering angle
+- `Kp` = proportional gain constant
+- `e(t)` = lateral error from desired path
+
+**A* Pathfinding Cost Function:**
+```
+f(n) = g(n) + h(n)
+```
+where:
+- `g(n)` = actual cost from start to node n
+- `h(n)` = heuristic estimate from n to goal
 
 <details>
-<summary><strong>Technical Specifications</strong></summary>
+<summary><strong>🔧 Technical Specifications</strong></summary>
 
 ```python
-# Key Parameters
-TARGET_SPEED = 30  # km/h
-SAFETY_DISTANCE = 10  # meters
-CONTROL_FREQUENCY = 10  # Hz
-DETECTION_RANGE = 100  # meters
+CONTROLLER_CONFIG = {
+    'target_speed': 30,          # km/h
+    'safety_distance': 10,       # meters
+    'control_frequency': 10,     # Hz
+    'detection_range': 100,      # meters
+    'steering_gain': 0.8,        # Kp for steering
+    'throttle_gain': 0.5,        # Kp for speed control
+    'brake_threshold': 0.3       # Emergency braking threshold
+}
 ```
 
-**Capabilities:**
-- ✅ Route planning and navigation
-- ✅ Traffic light detection and response
-- ✅ Basic obstacle avoidance
+**Core Capabilities:**
+- ✅ Waypoint-based navigation using A* pathfinding
+- ✅ Proportional control for steering and throttle
+- ✅ Traffic light state recognition and response
+- ✅ Basic obstacle detection and avoidance
 - ✅ NPC vehicle and pedestrian interaction
 
 </details>
 
-### 🚘 **MPC Navigation Controller**  
-*Enhanced precision through predictive optimization*
+---
 
-**Advanced Features:**
-- **🎯 Model Predictive Control** - Forward-looking trajectory optimization
-- **🌊 Smooth Trajectories** - Reduced oscillation and improved comfort
-- **⚙️ Predictive Optimization** - Multi-step ahead planning
-- **🔄 Enhanced Speed Control** - Consistent velocity profiles
+### 🚘 **2. MPC Navigation Controller**
 
-<details>
-<summary><strong>MPC Configuration</strong></summary>
+**Enhanced Control System** - Leverages Model Predictive Control for optimal trajectory planning with predictive horizon optimization.
 
-```python
-# MPC Parameters
-PREDICTION_HORIZON = 10  # steps
-CONTROL_HORIZON = 5      # steps
-SAMPLING_TIME = 0.1      # seconds
-OPTIMIZATION_SOLVER = 'ipopt'
+#### **MPC Mathematical Formulation**
+
+**Discrete-Time Vehicle Model:**
+```
+x(k+1) = f(x(k), u(k))
 ```
 
-**Improvements:**
+**Optimization Objective:**
+```
+min Σ[||x(k) - x_ref(k)||²_Q + ||u(k)||²_R]
+```
+
+**State Vector:**
+```
+x = [px, py, ψ, v]ᵀ
+```
+where:
+- `px, py` = position coordinates
+- `ψ` = heading angle  
+- `v` = velocity
+
+**Control Vector:**
+```
+u = [δ, a]ᵀ
+```
+where:
+- `δ` = steering angle
+- `a` = acceleration
+
+<details>
+<summary><strong>⚙️ MPC Configuration</strong></summary>
+
+```python
+MPC_PARAMETERS = {
+    'prediction_horizon': 10,    # N steps ahead
+    'control_horizon': 5,        # Control moves
+    'sampling_time': 0.1,        # seconds
+    'optimization_solver': 'ipopt',
+    'max_steering_angle': 0.5,   # radians
+    'max_acceleration': 3.0,     # m/s²
+    'weight_matrices': {
+        'Q': [10, 10, 1, 1],     # State weights
+        'R': [1, 1]              # Control weights
+    }
+}
+```
+
+**Performance Improvements:**
 - 🔺 50% reduction in steering oscillation
-- 🔺 30% smoother acceleration profiles  
-- 🔺 Enhanced cornering behavior
-- 🔺 Better energy efficiency
+- 🔺 30% smoother acceleration profiles
+- 🔺 Enhanced cornering stability
+- 🔺 Improved trajectory tracking accuracy
 
 </details>
 
-### 🤖 **MPC-RL Controller**
-*Next-generation AI-powered autonomous navigation*
+---
 
-**Cutting-Edge Integration:**
-- **🧠 Reinforcement Learning** - PPO-based adaptive control
-- **👁️ YOLO Object Detection** - Real-time visual perception
-- **🎯 MPC Optimization** - Precise trajectory control
-- **🌐 Dynamic Adaptation** - Environmental learning
+### 🤖 **3. MPC-RL Controller**
+
+**AI-Powered System** - Integrates Reinforcement Learning with MPC for adaptive, intelligent autonomous navigation.
+
+#### **PPO Algorithm Implementation**
+
+**Policy Optimization Objective:**
+```
+L^CLIP(θ) = E[min(r_t(θ)A_t, clip(r_t(θ), 1-ε, 1+ε)A_t)]
+```
+
+**Value Function Loss:**
+```
+L^VF(θ) = E[(V_θ(s_t) - V_t^target)²]
+```
+
+**Combined PPO Objective:**
+```
+L(θ) = E[L^CLIP(θ) - c₁L^VF(θ) + c₂H(π_θ)]
+```
 
 <details>
-<summary><strong>AI Architecture</strong></summary>
+<summary><strong>🧠 AI Architecture</strong></summary>
 
 ```python
-# Reinforcement Learning Setup
-ALGORITHM = 'PPO'           # Proximal Policy Optimization
-TRAINING_STEPS = 1_000_000  # timesteps
-NEURAL_NETWORK = [64, 64]   # hidden layers
-LEARNING_RATE = 3e-4
+PPO_CONFIG = {
+    'algorithm': 'PPO',
+    'total_timesteps': 1_000_000,
+    'learning_rate': 3e-4,
+    'batch_size': 64,
+    'gamma': 0.99,
+    'clip_range': 0.2,
+    'entropy_coefficient': 0.01,
+    'value_function_coefficient': 0.5,
+    'network_architecture': [64, 64],
+    'activation_function': 'tanh'
+}
 ```
 
-**Advanced Capabilities:**
-- 🎯 Real-time object detection (10 FPS)
-- 🧠 Adaptive decision making
-- 🛡️ Enhanced safety protocols
-- 📈 Continuous learning improvement
+**Advanced Integration:**
+- 🧠 **PPO Agent**: Proximal Policy Optimization for stable learning
+- 👁️ **YOLO Detection**: Real-time object detection at 10 FPS
+- 🎯 **MPC Integration**: Optimal control with learned policies
+- 🌐 **Environmental Adaptation**: Dynamic response to traffic conditions
 
 </details>
 
 ---
 
-## 📊 Performance Metrics
+## 📊 Performance Analysis
 
 <div align="center">
 
-### 🏆 **Comparative Analysis**
+### 🏆 **Comparative Performance Metrics**
 
-| Metric | Basic Navigation | MPC Enhanced | AI-Powered |
-|:-------|:----------------:|:------------:|:----------:|
-| **Collision Rate** | ~15% | ~10% | **<5%** |
-| **Path Smoothness** | ⭐⭐ | ⭐⭐⭐ | **⭐⭐⭐⭐⭐** |
-| **Speed Control** | ±20% | ±10% | **±5%** |
-| **Traffic Adaptation** | Basic | Moderate | **Advanced** |
-| **Response Time** | 100ms | 80ms | **50ms** |
-
-</div>
-
-### 📈 **Key Performance Indicators**
-
-<details>
-<summary><strong>Detailed Metrics</strong></summary>
-
-**Basic Navigation Controller:**
-- Average Speed: 20-30 km/h
-- Route Completion: 85%
-- Stop Accuracy: 90%
-- Computational Load: Low
-
-**MPC Navigation Controller:**
-- Average Speed: 20-30 km/h  
-- Route Completion: 90%
-- Trajectory Smoothness: +50%
-- Computational Load: Medium
-
-**MPC-RL Controller:**
-- Average Speed: 15-25 km/h (adaptive)
-- Route Completion: 95%
-- Mean Reward: 500 ± 50
-- Detection Accuracy: 85%
-- Computational Load: High
-
-</details>
-
----
-
-## 🎬 **Live Demonstrations**
-
-<div align="center">
-
-### **Basic Navigation in Action**
-<img src="images/stops1.gif" width="280px" style="margin: 10px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
-<img src="images/stops2.gif" width="280px" style="margin: 10px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
-
-*Demonstrating vehicle detection and emergency stopping*
-
-### **MPC Enhanced Control**
-<img src="images/stops3.gif" width="300px" style="margin: 10px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
-
-*Showcasing smooth trajectory following and predictive control*
-
-### **AI-Powered Navigation**
-<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
-<img src="images/first.gif" width="240px" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
-<img src="images/second.gif" width="240px" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
-<img src="images/third.gif" width="240px" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
-<img src="images/fifth.gif" width="240px" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
-</div>
-
-*Advanced AI-driven navigation with real-time adaptation*
+<table>
+<tr>
+<th>Performance Metric</th>
+<th>Basic Navigation</th>
+<th>MPC Enhanced</th>
+<th>AI-Powered</th>
+</tr>
+<tr>
+<td><strong>Collision Rate</strong></td>
+<td>~15%</td>
+<td>~10%</td>
+<td><strong>&lt;5%</strong></td>
+</tr>
+<tr>
+<td><strong>Path Smoothness</strong></td>
+<td>⭐⭐</td>
+<td>⭐⭐⭐</td>
+<td><strong>⭐⭐⭐⭐⭐</strong></td>
+</tr>
+<tr>
+<td><strong>Speed Control Accuracy</strong></td>
+<td>±20%</td>
+<td>±10%</td>
+<td><strong>±5%</strong></td>
+</tr>
+<tr>
+<td><strong>Traffic Adaptation</strong></td>
+<td>Basic</td>
+<td>Moderate</td>
+<td><strong>Advanced</strong></td>
+</tr>
+<tr>
+<td><strong>Response Time</strong></td>
+<td>100ms</td>
+<td>80ms</td>
+<td><strong>50ms</strong></td>
+</tr>
+<tr>
+<td><strong>Computational Load</strong></td>
+<td>Low</td>
+<td>Medium</td>
+<td>High</td>
+</tr>
+</table>
 
 </div>
 
 ---
 
-## 🚀 Quick Start
+## 🎬 Live Demonstrations
 
-### **Prerequisites**
-```bash
-# System Requirements
-OS: Windows 10/11 or Ubuntu 18.04+
-Python: 3.12
-RAM: 16GB+ recommended
-GPU: NVIDIA GTX 1060+ (for AI training)
-```
+<div align="center">
+
+### **Progressive Control Evolution**
+
+<table style="border: none;">
+<tr>
+<td align="center" style="border: none;">
+<h4>🚙 Basic Navigation</h4>
+<img src="images/stops1.gif" width="250px" style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+<p><em>P-control with obstacle detection</em></p>
+</td>
+<td align="center" style="border: none;">
+<h4>🚘 MPC Enhanced</h4>
+<img src="images/stops3.gif" width="250px" style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+<p><em>Predictive trajectory optimization</em></p>
+</td>
+<td align="center" style="border: none;">
+<h4>🤖 AI-Powered</h4>
+<img src="images/first.gif" width="250px" style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+<p><em>Adaptive intelligent navigation</em></p>
+</td>
+</tr>
+</table>
+
+### **Advanced AI Navigation Scenarios**
+
+<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 20px 0;">
+<img src="images/second.gif" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+<img src="images/third.gif" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+</div>
+
+</div>
+
+---
+
+## 🚀 Quick Start Guide
+
+### **System Requirements**
+
+<div align="center">
+
+| Component | Minimum | Recommended |
+|:---------:|:-------:|:-----------:|
+| **OS** | Windows 10 / Ubuntu 18.04+ | Windows 11 / Ubuntu 20.04+ |
+| **Python** | 3.8+ | 3.12 |
+| **RAM** | 8GB | 16GB+ |
+| **GPU** | GTX 1050 | RTX 3060+ |
+| **Storage** | 50GB | 100GB SSD |
+
+</div>
 
 ### **Installation**
 
 <details>
-<summary><strong>🔧 Step-by-Step Setup</strong></summary>
+<summary><strong>🔧 Complete Setup Instructions</strong></summary>
 
-**1. CARLA Installation**
+**1. CARLA Simulator Setup**
 ```bash
-# Download and extract CARLA 0.10.0
+# Download CARLA 0.10.0
 wget https://carla-releases.s3.eu-west-3.amazonaws.com/Linux/CARLA_0.10.0.tar.gz
 tar -xzf CARLA_0.10.0.tar.gz
 
 # Launch CARLA server
 cd CARLA_0.10.0
-./CarlaUE4.sh
+./CarlaUE4.sh -quality-level=Low -fps=30
 ```
 
-**2. Project Setup**
+**2. Project Installation**
 ```bash
 # Clone repository
 git clone https://github.com/Baebabe/Autonomous-Vehicle-Safety-and-Navgiation-through-AI.git
 cd Autonomous-Vehicle-Safety-and-Navgiation-through-AI
 
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# venv\Scripts\activate   # Windows
+# Setup virtual environment
+python -m venv carla_env
+source carla_env/bin/activate  # Linux/Mac
+# carla_env\Scripts\activate   # Windows
 
 # Install dependencies
 pip install -r requirements.txt
 ```
 
-**3. CARLA Python API**
+**3. CARLA Python API Configuration**
 ```bash
-# Add to PYTHONPATH
+# Add CARLA Python API to path
 export PYTHONPATH=$PYTHONPATH:/path/to/CARLA_0.10.0/PythonAPI/carla/dist/carla-0.10.0-py3.7-linux-x86_64.egg
 ```
 
@@ -247,75 +416,46 @@ export PYTHONPATH=$PYTHONPATH:/path/to/CARLA_0.10.0/PythonAPI/carla/dist/carla-0
 <div align="center">
 
 | Controller | Command | Description |
-|:-----------|:--------|:------------|
-| **Basic** | `python controller/main_navigation.py` | Foundation system |
-| **MPC** | `python controller/main_mpc.py` | Enhanced control |
-| **AI** | `python controller/main_mpc_rl.py` | Full AI integration |
+|:----------:|:--------|:------------|
+| **🚙 Basic** | `python controller/main_navigation.py` | P-control with A* pathfinding |
+| **🚘 MPC** | `python controller/main_mpc.py` | Model Predictive Control |
+| **🤖 AI** | `python controller/main_mpc_rl.py` | Reinforcement Learning integration |
 
 </div>
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Project Structure
 
-<div align="center">
-
-```mermaid
-graph TB
-    A[CARLA Environment] --> B[Sensor Data]
-    B --> C{Controller Type}
-    
-    C -->|Basic| D[A* Planning]
-    C -->|MPC| E[MPC Optimization]  
-    C -->|AI| F[RL Decision Making]
-    
-    D --> G[P Control]
-    E --> H[Predictive Control]
-    F --> I[YOLO Detection]
-    
-    G --> J[Vehicle Control]
-    H --> J
-    I --> K[MPC + RL Control]
-    K --> J
-    
-    J --> L[Safety Systems]
-    L --> M[Autonomous Navigation]
-```
-
-</div>
-
-### **📁 Project Structure**
 ```
 📦 Autonomous-Vehicle-AI/
 ├── 🎮 controller/
-│   ├── main_navigation.py      # Basic navigation entry point
-│   ├── main_mpc.py            # MPC controller entry point  
-│   ├── main_mpc_rl.py         # AI controller entry point
-│   ├── navigation_controller.py # P control implementation
-│   ├── mpc_controller.py       # MPC implementation
-│   └── safety_controller.py    # Safety systems
+│   ├── main_navigation.py          # Basic P-control navigation
+│   ├── main_mpc.py                # MPC implementation
+│   ├── main_mpc_rl.py             # RL-enhanced MPC
+│   ├── vehicle_detector.py        # Vehicle detection system
+│   ├── navigation_controller.py   # P-control algorithms
+│   ├── mpc_controller.py          # MPC optimization
+│   └── safety_controller.py       # Safety protocols
 ├── 👁️ perception/
-│   ├── carla_environment.py    # Environment interface
-│   ├── mpc.py                 # MPC optimization
-│   └── sb3_ppo_train.py       # RL training pipeline
-└── 📋 requirements.txt         # Dependencies
+│   ├── carla_environment.py       # CARLA interface
+│   ├── mpc.py                     # MPC mathematical model
+│   └── sb3_ppo_train.py          # PPO training pipeline
+├── 📊 models/                     # Trained RL models
+├── 📋 requirements.txt            # Python dependencies
+└── 📖 README.md                   # Documentation
 ```
 
 ---
 
-## 🧠 AI Training
+## 🧠 AI Training Pipeline
 
-### **Training the RL Model**
+### **Reinforcement Learning Training**
 
 <details>
-<summary><strong>🚀 Training Pipeline</strong></summary>
+<summary><strong>🚀 Training Configuration</strong></summary>
 
-**Start Training:**
-```bash
-python -c "from controller.main_mpc_rl import train_model; train_model()"
-```
-
-**Training Configuration:**
+**Training Hyperparameters:**
 ```python
 TRAINING_CONFIG = {
     'total_timesteps': 1_000_000,
@@ -323,123 +463,61 @@ TRAINING_CONFIG = {
     'batch_size': 64,
     'gamma': 0.99,
     'clip_range': 0.2,
-    'save_frequency': 50_000
+    'entropy_coefficient': 0.01,
+    'save_frequency': 50_000,
+    'evaluation_frequency': 10_000
 }
 ```
 
-**Monitoring Progress:**
+**Start Training:**
 ```bash
-tensorboard --logdir=./logs/
+python -c "from controller.main_mpc_rl import train_model; train_model()"
 ```
 
-</details>
-
-### **Model Evaluation**
+**Monitor Training Progress:**
 ```bash
-python -c "from controller.main_mpc_rl import evaluate_model; evaluate_model('models/best_model.zip')"
-```
-
----
-
-## 🔧 Configuration
-
-<details>
-<summary><strong>⚙️ Advanced Settings</strong></summary>
-
-### **Performance Tuning**
-```python
-# For high-performance systems
-HIGH_PERFORMANCE = {
-    'quality_level': 'Epic',
-    'resolution': '1920x1080',
-    'fps': 60,
-    'num_vehicles': 100
-}
-
-# For resource-constrained systems  
-LOW_RESOURCE = {
-    'quality_level': 'Low',
-    'resolution': '1280x720', 
-    'fps': 30,
-    'num_vehicles': 20
-}
-```
-
-### **Sensor Configuration**
-```python
-SENSOR_CONFIG = {
-    'camera': {'width': 1920, 'height': 1080, 'fov': 90},
-    'lidar': {'channels': 32, 'range': 100, 'points_per_second': 56000},
-    'radar': {'horizontal_fov': 30, 'vertical_fov': 30, 'range': 100}
-}
+tensorboard --logdir=./logs/ppo_training
 ```
 
 </details>
 
 ---
 
-## 🛠️ Troubleshooting
+## 📚 References & Documentation
 
-<details>
-<summary><strong>🔍 Common Solutions</strong></summary>
+### **Academic Foundations**
 
-**Connection Issues:**
-```bash
-# Check CARLA server status
-netstat -ano | findstr 2000
+- **Schulman, J. et al.** *"Proximal Policy Optimization Algorithms"* - arXiv:1707.06347, 2017
+- **Rawlings, J.B. et al.** *"Model Predictive Control: Theory and Design"* - Nob Hill Publishing, 2009
+- **Hart, P. et al.** *"A Formal Basis for the Heuristic Determination of Minimum Cost Paths"* - IEEE Transactions on Systems, 1968
 
-# Restart CARLA with specific port
-./CarlaUE4.sh -carla-port=2000
-```
-
-**Memory Issues:**
-```bash
-# Reduce batch size for training
-export CUDA_VISIBLE_DEVICES=0
-export GPU_MEMORY_FRACTION=0.6
-```
-
-**API Compatibility:**
-```bash
-# For Python 3.12 compatibility
-pip install carla==0.10.0 --force-reinstall
-```
-
-</details>
-
----
-
-
-## 📚 Documentation
-
-### **🎥 Video Tutorials**
+### **Video Demonstrations**
 
 <div align="center">
 
-[![Basic Navigation](https://img.youtube.com/vi/jG5JvMHZknQ/mqdefault.jpg)](https://youtu.be/jG5JvMHZknQ)
-[![MPC Controller](https://img.youtube.com/vi/LuupTtgS4D0/mqdefault.jpg)](https://youtu.be/LuupTtgS4D0)
-
-*Click to watch implementation tutorials*
+[![Basic Navigation Demo](https://img.shields.io/badge/▶️-Basic%20Navigation-red?style=for-the-badge&logo=youtube)](https://youtu.be/jG5JvMHZknQ)
+[![MPC Controller Demo](https://img.shields.io/badge/▶️-MPC%20Controller-red?style=for-the-badge&logo=youtube)](https://youtu.be/LuupTtgS4D0)
 
 </div>
 
-### **📖 Key References**
-
-<details>
-<summary><strong>Academic References</strong></summary>
-
-1. Schulman, J. et al. "Proximal Policy Optimization Algorithms." *arXiv preprint*, 2017.
-2. Camacho, E.F. & Bordons, C. "Model Predictive Control." *Springer*, 2007.
-3. Hart, P. et al. "A Formal Basis for Heuristic Determination of Minimum Cost Paths." *IEEE Transactions*, 1968.
-4. CARLA Team. "CARLA: An Open Urban Driving Simulator." *CoRL*, 2017.
-5. Ultralytics. "YOLOv11: Real-time Object Detection." *GitHub*, 2024.
-
-</details>
-
 ---
 
-**Built with:** CARLA • PyTorch • Stable-Baselines3 • YOLO • CasADi
-
-*Advancing the future of autonomous vehicle technology*
-
+<div align="center">
+  
+  **Built with cutting-edge technologies:**
+  
+  ![CARLA](https://img.shields.io/badge/CARLA-Simulator-00D2FF?style=flat-square&logo=unrealengine)
+  ![PyTorch](https://img.shields.io/badge/PyTorch-Deep%20Learning-EE4C2C?style=flat-square&logo=pytorch)
+  ![Stable Baselines3](https://img.shields.io/badge/SB3-Reinforcement%20Learning-4285F4?style=flat-square)
+  ![YOLO](https://img.shields.io/badge/YOLO-Object%20Detection-00FFFF?style=flat-square)
+  ![CasADi](https://img.shields.io/badge/CasADi-Optimization-FF6B6B?style=flat-square)
+  
+  ---
+  
+  <p style="color: #666; font-style: italic;">
+    Advancing the frontiers of autonomous vehicle technology through intelligent control systems
+  </p>
+  
+  **[⭐ Star this repository](https://github.com/Baebabe/Autonomous-Vehicle-Safety-and-Navgiation-through-AI) if you find it useful!**
+  
 </div>
