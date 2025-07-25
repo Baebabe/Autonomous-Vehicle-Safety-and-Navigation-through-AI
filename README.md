@@ -356,20 +356,6 @@ PPO_CONFIG = {
 
 ## 🚀 Quick Start Guide
 
-### **System Requirements**
-
-<div align="center">
-
-| Component | Minimum | Recommended |
-|:---------:|:-------:|:-----------:|
-| **OS** | Windows 10 / Ubuntu 18.04+ | Windows 11 / Ubuntu 20.04+ |
-| **Python** | 3.8+ | 3.12 |
-| **RAM** | 8GB | 16GB+ |
-| **GPU** | GTX 1050 | RTX 3060+ |
-| **Storage** | 50GB | 100GB SSD |
-
-</div>
-
 ### **Installation**
 
 <details>
